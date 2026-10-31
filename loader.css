@@ -1,0 +1,17 @@
+/* Layar loading: putih polos, logo muncul dari buram, garis progres, lalu memudar */
+#loader{display:none}
+html.loading{overflow:hidden}
+html.loading #loader{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#fff;color:#111;
+  transition:opacity .7s cubic-bezier(.4,0,.2,1),filter .7s cubic-bezier(.4,0,.2,1)}
+#loader.out{opacity:0;filter:blur(14px);pointer-events:none}
+.ld-in{display:flex;flex-direction:column;align-items:center}
+.ld-logo{display:block;height:78px;width:auto;animation:ldRise 1s cubic-bezier(.16,1,.3,1) .1s both}
+.ld-text{margin-top:24px;font-size:9.5px;font-weight:500;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:#9a9aa6;animation:ldLabel .7s cubic-bezier(.22,1,.36,1) .85s both}
+.ld-bar{position:relative;margin-top:12px;width:min(146px,44vw);height:1.5px;background:#e4e4e8;overflow:hidden;animation:ldLine .55s cubic-bezier(.22,1,.36,1) .5s both}
+.ld-bar i{position:absolute;inset:0;background:#14141f;transform:scaleX(0);transform-origin:left}
+@keyframes ldRise{from{opacity:0;filter:blur(14px);transform:translateY(36px)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes ldLabel{from{opacity:0;filter:blur(7px);transform:translateY(8px)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes ldLine{0%{opacity:0;transform:scaleX(.35);background:#8c8c96}55%{opacity:1;background:#8c8c96}100%{opacity:1;transform:none;background:#e4e4e8}}
+/* animasi hero & tombol AI menunggu loading selesai */
+html.hold .hero-in>*{animation-play-state:paused!important}
+html.hold .ai-fab{animation-play-state:paused}

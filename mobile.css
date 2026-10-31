@@ -1,0 +1,37 @@
+/* Penyesuaian tampilan HP & tablet. Desktop (>900px) tidak berubah. */
+.nav-toggle{display:none}
+@media(max-width:900px){
+  .top{flex-wrap:wrap;gap:0;padding:6px 16px;padding-top:calc(6px + env(safe-area-inset-top,0px));max-height:100vh;max-height:100dvh;overflow-y:auto;overscroll-behavior:contain}
+  .logo img{height:38px}.logo img.lt{height:40px}
+  .nav-toggle{display:grid;place-content:center;gap:5px;margin-left:auto;width:46px;height:46px;padding:0;border:0;border-radius:12px;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .nav-toggle:active{background:#e5e7eb}
+  .nav-toggle span{display:block;width:24px;height:2.5px;border-radius:2px;background:var(--ink);transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .2s}
+  .top.open .nav-toggle span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .top.open .nav-toggle span:nth-child(2){opacity:0}
+  .top.open .nav-toggle span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  .top nav,.top .cta-top{display:none}
+  .top.open nav{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;width:100%;margin-top:6px;border-top:1px solid #e5e7eb;animation:navIn .35s cubic-bezier(.22,1,.36,1) both}
+  .top.open .cta-top{display:flex;justify-content:center;width:100%;margin:14px 0 8px;padding:14px 16px;font-size:15px;animation:navIn .4s cubic-bezier(.22,1,.36,1) .05s both}
+  .top nav>a,.dd>a{padding:14px 4px;font-size:16px;border-bottom:1px solid #eef0f3}
+  .dd>a{display:flex;justify-content:space-between;align-items:center}
+  .dd>a::after{margin:0 8px 3px 8px;transition:transform .25s}
+  .dd.open>a{color:var(--pri);font-weight:600}.dd.open>a::after{transform:rotate(225deg) translate(-2px,-2px)}
+  .dd:hover>div,.dd:focus-within>div{display:none}
+  .dd>div{position:static;min-width:0;padding:2px 0 8px 14px;background:transparent;box-shadow:none;border-radius:0;border-bottom:1px solid #eef0f3}
+  .dd.open>div{display:block;animation:navIn .3s ease both}
+  .dd>div a{padding:12px 8px;font-size:15px;color:#4b5563}
+  html.nav-open{overflow:hidden}
+  @keyframes navIn{from{opacity:0;transform:translateY(-8px)}}
+}
+@media(max-width:600px){
+  .wrap{padding-left:16px;padding-right:16px}
+  .hero{padding:96px 16px 56px}
+  .hero p{font-size:16px}
+  .hero .cta{flex-direction:column;align-items:stretch;max-width:320px;margin-inline:auto}
+  .hero .btn{text-align:center}
+  .head h2{font-size:24px}
+}
+@media(max-width:360px){
+  .logo img.lt{height:34px}.logo img{height:34px}
+  .mitra-grid{gap:8px}
+}
